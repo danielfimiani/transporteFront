@@ -11,6 +11,7 @@ import Users from '@/components/Users'
 
 //AuthMiddleware
 const AuthMiddleware = ((to,from,next) => {
+  next();
   const user = localStorage.getItem('User');
   if(user){
     //Chek if the session expire 
