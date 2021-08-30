@@ -36,6 +36,7 @@
 
 <script>
 import axios from 'axios';
+import {toastDanger} from '@/toasts/toast.js'
 import Spinner from '../components/Spinner.vue';
   export default {
     name: "Login",    
@@ -77,6 +78,7 @@ import Spinner from '../components/Spinner.vue';
         .catch(e => {
           console.log(e)
           this.spiner = !this.spiner;
+          toastDanger("Na se ha podido inicar la sesión , por favor intente de nuevo mas tarde..")
         });
       }
     }

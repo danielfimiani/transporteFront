@@ -10,11 +10,6 @@ export default {
     name: 'MainLayout',
     components: {
         SideBar
-    },
-    mounted(){
-        if(localStorage.isAuthenticated){
-            this.$router.push('/')
-        }
     }
 }
 </script>

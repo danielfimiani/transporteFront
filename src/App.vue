@@ -4,17 +4,6 @@
 
 <script>
 export default {
-  name: 'App',
-  data(){
-    return {
-      isAuthenticated : false
-    }
-  },
-  methods:{
-    userLogin(){
-      this.isAuthenticated = true
-      this.$router.push('/home')
-    }
-  }
+  name: 'App'
 }
 </script>
