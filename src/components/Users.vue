@@ -11,7 +11,7 @@
                             <tr>
                                 <th>Username</th> 
                                 <th>Nomrbe y Apellido</th> 
-                                <th>Email</th> 
+                                <th>Email</th>
                                 <th></th>
                             </tr>
                             </thead> 
