@@ -1,7 +1,8 @@
 <template>
-   <div class="bg-white md:py-8 px-4 lg:max-w-7xl lg:mx-auto lg:px-8">
+   <div class="flex justify-center items-center h-full w-full flex-col p-16">
         <p class="text-4xl font-bold text-gray-800 mb-8">March 2021</p>
-        <div class="inline-flex flex-col space-y-1 items-start justify-start h-full w-full">
+
+        <div class="inline-flex flex-col space-y-1 w-full">
             <div class="inline-flex space-x-28 items-start justify-start pr-24 h-full w-full">
                 <p class="w-12 h-full text-sm font-medium text-gray-800 uppercase">M</p>
                 <p class="w-12 h-full text-sm font-medium text-gray-800 uppercase">T</p>

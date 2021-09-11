@@ -1,69 +1,84 @@
 <template>
-   <!-- This example requires Tailwind CSS v2.0+ -->
-<div class="flex flex-col">
-  <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-    <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-      <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-        <table class="min-w-full divide-y divide-gray-200">
-          <thead class="bg-gray-50">
-            <tr>
-              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Name
-              </th>
-              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Title
-              </th>
-              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Status
-              </th>
-              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Role
-              </th>
-              <th scope="col" class="relative px-6 py-3">
-                <span class="sr-only">Edit</span>
-              </th>
-            </tr>
-          </thead>
-          <tbody class="bg-white divide-y divide-gray-200">
-            <tr>
-              <td class="px-6 py-4 whitespace-nowrap">
-                <div class="flex items-center">
-                  <div class="flex-shrink-0 h-10 w-10">
-                    <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60" alt="">
-                  </div>
-                  <div class="ml-4">
-                    <div class="text-sm font-medium text-gray-900">
-                      Jane Cooper
+    <div class="h-full bg-gray-400 w-full p-16">
+        <div class="card text-center shadow-xl p-8 min-h-full bg-white overflow-hidden">
+            <div class="flex justify-center items-center h-full">
+                <div v-if="users.length != 0" class="w-full">
+                    <h1 class="text-4xl text-center mt-8">Usuarios del Sistema.</h1>
+
+                    <div class="w-full p-16">
+                        <table class="table table-compact w-full max-h-full" v-if="users">
+                            <thead>
+                            <tr>
+                                <th>Username</th> 
+                                <th>Nomrbe y Apellido</th> 
+                                <th>Email</th> 
+                                <th></th>
+                            </tr>
+                            </thead> 
+                            <tbody>
+                            <tr v-for="user in users" :key="user.nombre_apellido">            
+                                <!-- User name -->
+                                <td>
+                                    <div class="font-bold">
+                                        {{user.UserName.toUpperCase()}}
+                                    </div> 
+                                </td> 
+                                <!-- User name -->
+                                <td>
+                                    <div class="font-bold">
+                                        {{user.nombre_apellido}}
+                                    </div> 
+                                </td> 
+                                <!-- User email -->
+                                <td>
+                                    <div class="font-bold">
+                                        {{user.mail}}
+                                    </div>
+                                </td> 
+                                <td>
+                                    <div class="flex justify-around">
+                                        <button class="btn btn-sm btn-info">Editaar</button> 
+                                        <button class="btn btn-sm btn-error" @click="showModal = true">Borrar</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody> 
+                        </table>
+                        <h1 v-else>No hay datos.</h1>
+                    
+                        <ModalConfirm v-if="showModal" @no="showModal = false"></ModalConfirm>
                     </div>
-                    <div class="text-sm text-gray-500">
-                      jane.cooper@example.com
-                    </div>
-                  </div>
                 </div>
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap">
-                <div class="text-sm text-gray-900">Regional Paradigm Technician</div>
-                <div class="text-sm text-gray-500">Optimization</div>
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap">
-                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                  Active
-                </span>
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                Admin
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-              </td>
-            </tr>
-
-            <!-- More people... -->
-          </tbody>
-        </table>
-      </div>
+                <h1 v-else class="text-4xl text-center">Nada para mostrar aqui 😊</h1>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
-
+    
 </template>
+<script>
+import ModalConfirm from '@/components/ModalConfirm'
+export default {
+    name : 'Users',
+    components : {
+        ModalConfirm
+    },
+    data(){
+        return {
+        users : [],
+        showModal:false
+        }
+    },
+    async mounted(){
+        await fetch('http://192.168.0.52/api/Usuario/GetUsuarios')
+        .then(res => res.json())
+        .then(data => this.users = JSON.parse(data.data))
+        .catch(e=> console.error(e));
+    }
+}
+</script>
+
+<style scoped>
+    td {
+        padding: 0.25rem !important;
+    }
+</style>

@@ -1,114 +1,72 @@
 <template>
-	<nav class="flex flex-col bg-gray-200 dark:bg-gray-900 w-64 px-12 pt-4 pb-6">
-		<!-- SideNavBar -->
 
-		<div class="flex flex-row border-b items-center justify-between pb-2">
-			<!-- Hearder -->
-			<span class="text-lg font-semibold capitalize dark:text-gray-300">
-				my admin
-			</span>
-		</div>
+<div class="h-full shadow-2xl">
+	<nav class="flex flex-col bg-gray-200 px-6 h-full justify-center">	
+		<router-link :to="{name: 'Home'}" class="btn btn-outline btn-accent mt-10 flex">
+			<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+			<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+			</svg>
+			<p>Inicio</p>
+		</router-link>
+		
+		<router-link :to="{name: 'Calendar'}" class="btn btn-outline btn-accent mt-10">
+			<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+			<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+			</svg>
+			<p>Calendar</p>
+		</router-link>
+		
+		<router-link :to="{name: 'Users'}" class="btn btn-outline btn-accent mt-10">
+			<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+			</svg>
+			<p >
+				Usuarios
+			</p>
+		</router-link>
 
-		<div class="mt-8">
-			<!-- User info -->
-			<img
-				class="h-12 w-12 rounded-full object-cover"
-				src="https://appzzang.me/data/editor/1608/f9c387cb6bd7a0b004f975cd92cbe2d9_1471626325_6802.png"
-				alt="enoshima profile" />
-			<h2
-				class="mt-4 text-xl dark:text-gray-300 font-extrabold capitalize">
-				Hello Enoshima
-			</h2>
-			<span class="text-sm dark:text-gray-300">
-				<span class="font-semibold text-green-600 dark:text-green-300">
-					Admin
-				</span>
-				id789038
-			</span>
-		</div>
-
-		<button
-			class="mt-8 flex items-center justify-between py-3 px-2 text-white
-			dark:text-gray-200 bg-green-400 dark:bg-green-500 rounded-lg shadow">
-			<!-- Action -->
-			<router-link :to="{name: 'Home'}">Home</router-link>>
-		</button>
-
-		<ul class="mt-2 text-gray-600">
-			<li class="mt-8">
-				<i class="fa fa-calendar"></i>
-				<router-link :to="{name: 'Calendar'}">Calendar</router-link>>
-			</li>
-
-			<li
-				class="mt-8 shadow py-2 bg-white dark:bg-gray-200 rounded-lg
-				-ml-4">
-				<a href="#home" class="flex pl-4">
-					<svg class="fill-current h-5 w-5" viewBox="0 0 24 24">
-						<path
-							d="M12 4a4 4 0 014 4 4 4 0 01-4 4 4 4 0 01-4-4 4 4 0
-							014-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4
-							8-4z"></path>
+		<div class="collapse border rounded-box border-gray-900 collapse-arrow mt-10">
+			<input type="checkbox"> 
+			<div class="collapse-title text-xl font-medium">
+				Operaciones
+			</div> 
+			<div class="collapse-content"> 
+				<router-link :to="{name: 'Excel'}" class="btn btn-outline btn-accent mt-10 w-full">
+					<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
 					</svg>
-					<router-link :to="{name: 'Users'}">Users</router-link>>
-				</a>
-			</li>
-
-			<li class="mt-8">
-				<a href="#home" class="flex">
-					<svg
-						class="fill-current h-5 w-5 dark:text-gray-300"
-						viewBox="0 0 24 24">
-						<path
-							d="M12 13H7v5h5v2H5V10h2v1h5v2M8
-							4v2H4V4h4m2-2H2v6h8V2m10 9v2h-4v-2h4m2-2h-8v6h8V9m-2
-							9v2h-4v-2h4m2-2h-8v6h8v-6z"></path>
-					</svg>
-					<span
-						class="ml-2 capitalize font-medium text-black
-						dark:text-gray-300">
-						tasks
-					</span>
-				</a>
-			</li>
-
-			<li class="mt-8" @click.prevent="LogOut()">
-				<a href="#home" class="flex">
-					<svg
-						class="fill-current h-5 w-5 dark:text-gray-300"
-						viewBox="0 0 24 24">
-						<path
-							d="M12 13H7v5h5v2H5V10h2v1h5v2M8
-							4v2H4V4h4m2-2H2v6h8V2m10 9v2h-4v-2h4m2-2h-8v6h8V9m-2
-							9v2h-4v-2h4m2-2h-8v6h8v-6z"></path>
-					</svg>
-					<span
-						class="ml-2 capitalize font-medium text-black
-						dark:text-gray-300">
-						Cerrar Sesion
-					</span>
-				</a>
-			</li>
-		</ul>
-
-		<div class="mt-auto flex items-center text-red-700 dark:text-red-400">
-			<!-- important action -->
-		</div>
+					<p >
+						Subida excel de recepcion
+					</p>
+				</router-link>	
+			</div>
+		</div> 
 	</nav>
+</div>
+
 </template>
 <script>
-export default {
-	name: 'SideBar',
-	mounted() {		
-		this.$router.push('Home')
-	},
-	methods: {
-		LogOut(){
-			if (localStorage.getItem('User')){
-				localStorage.removeItem('User')
+	export default {
+		name: 'SideBar',
+		data() {
+			return {
+				username: 'Usuario'
 			}
-			this.$router.push({path: '/'})
+		},
+		mounted() {		
+			let user = localStorage.getItem('User')
+			if (user){
+				this.username = user.nombre;
+				this.$router.push('Home')	
+			}
+		},
+		methods: {
+			LogOut(){
+				if (localStorage.getItem('User')){
+					localStorage.removeItem('User')
+				}
+				this.$router.push({path: '/'})
+			}
 		}
 	}
-}
 </script>

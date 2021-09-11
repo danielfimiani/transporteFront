@@ -1,7 +1,7 @@
 import { createToast } from 'mosha-vue-toastify';
 
 let config = {
-    position: 'bottom-center',
+    position: 'bottom-right',
     transition: 'zoom',
     hideProgressBar: 'true',
     showCloseButton: 'false',

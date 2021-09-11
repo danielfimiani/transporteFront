@@ -1,5 +1,5 @@
 <template>
-  <div class="lds-ring">
+  <div class="lds-ring m-auto">
     <div></div>
     <div></div>
     <div></div>
@@ -14,6 +14,7 @@ export default {name:'Spinner'};
 <style lang="css" scoped>
 .lds-ring {
   display: inline-block;
+  position: relative;
   width: 80px;
   height: 80px;
 }
@@ -24,10 +25,10 @@ export default {name:'Spinner'};
   width: 64px;
   height: 64px;
   margin: 8px;
-  border: 8px solid rgba(217, 119, 6);
+  border: 8px solid black;
   border-radius: 50%;
   animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-  border-color: rgba(217, 119, 6) transparent transparent transparent;
+  border-color: black transparent transparent transparent;
 }
 .lds-ring div:nth-child(1) {
   animation-delay: -0.45s;
