@@ -8,13 +8,13 @@
             </section>
         </div>
     </div>
-    
 </template>
 <script>
 import SideBar from '@/components/SideBar/SideBar.vue'
 import NavBar from '@/components/NavBar/NavBar.vue'
+
 export default {
     name: 'MainLayout',
-    components: { SideBar , NavBar }
+    components: { SideBar , NavBar}
 }
 </script>

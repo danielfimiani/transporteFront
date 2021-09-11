@@ -1,8 +1,11 @@
-import {createApp}  from 'vue';
+import {createApp}  from 'vue'
 import router from './router'
 import App from './App.vue'
-import 'mosha-vue-toastify/dist/style.css'
+import Notifications from 'notiwind'
 import './index.css'
 
-createApp(App).use(router).mount('#app');
+createApp(App)
+    .use(router)
+    .use(Notifications)
+    .mount('#app');
 

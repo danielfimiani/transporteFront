@@ -31,7 +31,10 @@ export default {
     },
     mounted(){
         let user = JSON.parse(localStorage.getItem('User'));
-        this.username = user.nombre;
+
+        if (user) {
+            this.username = user.nombre;
+        }
     },
     methods : {
         LogOut() {

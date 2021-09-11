@@ -26,7 +26,7 @@
 
                   <input type="submit" value="Iniciar Sesion" class="btn btn-lg mt-4" v-if="!spiner">
 
-                  <Spinner v-if="spiner" class="mt-10"/>
+                  <Spinner v-if="spiner"/>
               </form>
           </div>
       </div>                
@@ -35,7 +35,6 @@
 
 <script>
 import axios from 'axios';
-import {toastDanger, toastSuccess} from '@/toasts/toast.js'
 import Spinner from '../components/Spinner.vue';
   export default {
     name: "Login",    
@@ -72,13 +71,13 @@ import Spinner from '../components/Spinner.vue';
             localStorage.setItem('User',JSON.stringify(user));
             this.spiner = !this.spiner;
             this.$router.push({path : '/MainLayout'})
-            toastSuccess(`Bienvenido ${user.nombre.toUpperCase()}`)
+            this.$notify({group: "success",title: "Success",text: `Bienvenido ${user.nombre.toUpperCase()}`}, 2000) // 2s
           }
         })
         .catch(e => {
           console.log(e)
           this.spiner = !this.spiner;
-          toastDanger("Na se ha podido inicar la sesión , por favor intente de nuevo mas tarde..")
+          this.$notify({group: "error",title: "Error",text: "No se pudo inicar sesion, intente de nuevo más tarde."}, 2000) // 2s
         });
       }
     }
