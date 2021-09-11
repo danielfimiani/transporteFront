@@ -4,36 +4,72 @@
             
             <h1 class="text-4xl">Importacion de planilla</h1>
             
-            <main class="container mx-auto h-full">
-                <!-- scroll area -->
-                <section class="h-full overflow-auto p-8 w-full flex flex-col">
-                    <header class="border-dashed border-2 border-gray-400 py-12 flex flex-col justify-center items-center">
-                        <p class="mb-3 font-semibold text-gray-900 flex flex-wrap justify-center">
-                            Arrastra y suelta archivos aqui 
-                        </p>
-                        
-                        <div class="divider"></div> 
+            <DropZone @drop.prevent="drop" @change="selectedFile"/>
 
-                        
-                        <button class="btn btn-lg">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="inline-block w-6 h-6 mr-2 stroke-current" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
-                            </svg>
-                            Seleccionar Archivo
-                            <input @change="handleInput" id="hidden-input" type="file" class="absolute btn w-64 opacity-0" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"/>
-                        </button>
-                    </header>
-                </section>
-            </main>
+            <span class="file-info">{{ dropzoneFile.name }}</span>
+
+            <div v-if="dropzoneFile.name && !spinner" class="flex justify-between">
+                <button  class="btn btn-success mt-16 w-2/6" @click="submitFile">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="inline-block w-6 h-6 mr-2 stroke-current" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+                    </svg>
+                    Subir Archivo
+                </button>
+
+                <button class="btn btn-error mt-16 w-2/6" @click="clearDropZone">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="inline-block w-6 h-6 mr-2 stroke-current" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                    </svg>
+                    Limpiar
+                </button>
+            </div>
+
+            <Spinner v-if="spinner" class="mt-6"/>
         </div>
     </div>
 </template>
 <script>
+import readXlsxFile from 'read-excel-file'
+import DropZone from '@/components/ExcelUpload/DropZone';
+import Spinner from '@/components/Spinner.vue';
+import { ref } from "vue";
+
 export default {
+    components : {DropZone,Spinner},
+    data(){
+        return {
+            spinner : false
+        }
+    },
+    setup() {
+        let dropzoneFile = ref("");
+        let freshvalue = dropzoneFile.value;
+        
+        const drop = (e) => {
+            dropzoneFile.value = e.dataTransfer.files[0];
+        };
+        
+        const selectedFile = () => {
+            dropzoneFile.value = document.querySelector(".dropzoneFile").files[0];
+        };
+
+        const clearDropZone = () => {
+            dropzoneFile.value = freshvalue;
+        }
+        
+        return { dropzoneFile, drop, selectedFile , clearDropZone};
+    },
     methods:{
-        handleInput(e){
-            var files = e.target.files[0];
-            console.log(files);
+        submitFile(){
+            this.spinner = true;
+            const input = document.querySelector(".dropzoneFile");
+            readXlsxFile(input.files[0]).then((rows) => {
+               console.log(rows);
+            })
+
+            this.$notify({group: "success",title: "Success",text: "Archivo Importado con exito!"}, 2000) // 2s
+            this.spinner = false ;
+            
         }
     }
 }

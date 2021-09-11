@@ -8,7 +8,7 @@ import MainLayout from '@/views/MainLayout';
 import Home from '@/components/Home';
 import Calendar from '@/components/Calendar';
 import Users from '@/components/Users';
-import ExcelUpload from '@/components/ExcelUpload/ExcelUpload';
+import ExcelUpload from '@/components/ExcelUpload/ExcelUpload.vue';
 
 //AuthMiddleware
 // const AuthMiddleware = ((to,from,next) => {

@@ -54,11 +54,7 @@
 			}
 		},
 		mounted() {		
-			let user = localStorage.getItem('User')
-			if (user){
-				this.username = user.nombre;
-				this.$router.push('Home')	
-			}
+			this.$router.push('Home')				
 		},
 		methods: {
 			LogOut(){
