@@ -61,7 +61,7 @@ import Spinner from '../components/Spinner.vue';
           "password": "gtl6a54hQsEY6r8mjArSF2Ubg2o="
         }
 
-        await axios.post(url, credentials)
+        await axios.post(url, credentials, {headers: {"Access-Control-Allow-Origin" : "*"}})
         .then(res => {
           if(res.data.success == 'ok'){
             let user = {

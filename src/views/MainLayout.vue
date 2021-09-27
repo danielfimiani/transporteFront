@@ -1,9 +1,9 @@
 <template>
     <div class="h-screen flex flex-col">
-        <NavBar></NavBar>
+        <NavBar @toggleSideBar="toggle = !toggle"></NavBar>
         <div class="h-full flex">
-            <SideBar class="w-1/5 h-full"/>
-            <section class="w-4/5 h-full">
+            <SideBar v-show="toggle"/>
+            <section class="w-full">
                 <router-view></router-view>
             </section>
         </div>
@@ -15,6 +15,7 @@ import NavBar from '@/components/NavBar/NavBar.vue'
 
 export default {
     name: 'MainLayout',
+    data(){return {toggle:false}},
     components: { SideBar , NavBar}
 }
 </script>

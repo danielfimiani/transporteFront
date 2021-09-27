@@ -4,7 +4,7 @@
             <p class="mr-4">{{username}}</p>
 
             <div class="avatar placeholder">
-                <div class="bg-neutral-focus text-neutral-content rounded-full w-10 h-10">
+                <div class="bg-white text-black rounded-full w-10 h-10">
                     <span>{{username.charAt(0).toUpperCase()}}</span>
                 </div>
             </div>

@@ -3,12 +3,11 @@ import { createWebHistory, createRouter } from "vue-router";
 
 //Components
 import Login from '@/views/Login';
-import PageNotFound from '@/views/PageNotFound.vue';
+import PageNotFound from '@/views/PageNotFound';
 import MainLayout from '@/views/MainLayout';
 import Home from '@/components/Home';
-import Calendar from '@/components/Calendar';
 import Users from '@/components/Users';
-import ExcelUpload from '@/components/ExcelUpload/ExcelUpload.vue';
+import ExcelUpload from '@/components/ExcelUpload/ExcelUpload';
 
 //AuthMiddleware
 // const AuthMiddleware = ((to,from,next) => {
@@ -30,7 +29,7 @@ import ExcelUpload from '@/components/ExcelUpload/ExcelUpload.vue';
 const routes = [
   {
     path: "/",
-    name: "login",
+    name: "Login",
     component: Login,
   },
   {
@@ -43,11 +42,6 @@ const routes = [
         path: "/Home",
         name: "Home",
         component: Home,
-      },
-      {
-        path: "/Calendar",
-        name: "Calendar",
-        component: Calendar,
       },
       {
         path: "/Users",
