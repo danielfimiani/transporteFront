@@ -3,14 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "serve": "vue-cli-service serve --mode dev",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "axios": "^0.21.1",
+    "btoa": "^1.2.1",
     "core-js": "^3.6.5",
     "daisyui": "^1.14.0",
+    "jsbarcode": "^3.11.5",
+    "node-forge": "^0.10.0",
     "notiwind": "^1.2.3",
     "read-excel-file": "^5.2.10",
     "vue": "^3.0.0",

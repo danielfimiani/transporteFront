@@ -6,8 +6,10 @@ import Login from '@/views/Login';
 import PageNotFound from '@/views/PageNotFound';
 import MainLayout from '@/views/MainLayout';
 import Home from '@/components/Home';
-import Users from '@/components/Users';
+import Users from '@/components/Users/Users';
 import ExcelUpload from '@/components/ExcelUpload/ExcelUpload';
+import BarCode from '@/components/BarCode/BarCode'
+import ConsultaSerie from '@/components/ConsultaSerie/ConsultaSerie'
 
 //AuthMiddleware
 // const AuthMiddleware = ((to,from,next) => {
@@ -47,6 +49,16 @@ const routes = [
         path: "/Users",
         name: "Users",
         component: Users,
+      },
+      {
+        path: "/BarCode",
+        name: "Barcode",
+        component: BarCode,
+      },
+      {
+        path: "/ConsutlaSerie",
+        name: "Serie",
+        component: ConsultaSerie,
       },
       {
         path: "/ExcelUpload",

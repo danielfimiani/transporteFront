@@ -1,22 +1,11 @@
 <template>
     <div class="h-full bg-gray-400 w-full p-16">
         <div class="card text-center shadow-xl p-8 max-h-full bg-white overflow-hidden">
-            <div class="grid grid-cols-3 relative" id="print">
-                <p>EP000717574N</p>
-                <p>EP000719136N</p>
-                <p>EP000719754N</p>
-                <p>EP000724270N</p>
-                <p>EP000725177N</p>
-                <p>EP000727587N</p>
-                <p>EP000727706N</p>
-                <p>EP000728807N</p>
-                <p>EP000728837N</p>
-                <p>EP000729030N</p>
-                <p>EP000730172N</p>
-                <p>EP000730577N</p>
-                <p>EP000729030N</p>
-                <p>EP000730172N</p>
-                <p>EP000730577N</p>
+            <div class="flex relative justify-center items-center h-96" id="print">
+                <svg id="code1281"></svg>
+                <svg id="code1282"></svg>
+                <svg id="code1283"></svg>
+                <svg id="code1284"></svg>
             </div>
             <div class="btn btn-lg" @click="Print"> Imprimir </div>
         </div>
@@ -24,8 +13,15 @@
 </template>
 
 <script>
+const JsBarcode = require('jsbarcode');
 export default {
     name : 'BarCode',
+    mounted(){
+        JsBarcode('#code1281','EP000717574N',);
+        JsBarcode('#code1282','EP0007ASDASN',);
+        JsBarcode('#code1283','EPP-SS-17-4N',);
+        JsBarcode('#code1284','EP000712314N',);
+    },
     methods : {
         Print(){
             var originalContent = document.body.innerHTML;
@@ -42,9 +38,5 @@ export default {
 @font-face {
     font-family: 'LibreBarcode';
     src: url("../../assets/LibreBarcode128Text-Regular.ttf");
-}
-p {
-    font-family: 'LibreBarcode';
-    font-size: 64px;
 }
 </style>

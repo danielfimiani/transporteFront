@@ -15,7 +15,7 @@ import NavBar from '@/components/NavBar/NavBar.vue'
 
 export default {
     name: 'MainLayout',
-    data(){return {toggle:false}},
+    data(){return {toggle:true}},
     components: { SideBar , NavBar}
 }
 </script>
