@@ -3,17 +3,7 @@
     <input id="drawer" type="checkbox" class="drawer-toggle" checked />
     <div class="drawer-side w-full h-full">
       <label for="drawer" class="drawer-overlay"></label>
-      <ul
-        class="
-          menu
-          p-4
-          overflow-y-auto
-          w-80
-          bg-base-100
-          text-base-content
-          shadow-lg
-        "
-      >
+      <ul :class="menu">
         <li>
           <div class="collapse rounded collapse-arrow">
             <input type="checkbox" />
@@ -255,6 +245,7 @@ export default {
   name: "SideBar",
   data() {
     return {
+      menu: "menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content shadow-lg",
       username: "Usuario",
       toggle: true,
     };

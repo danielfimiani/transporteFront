@@ -15,15 +15,17 @@
         </div>         
         
         <div class="float-right">
-            <UserButton></UserButton>
+            <VersionesButton/>
+            <UserButton/>
         </div>
     </div>
 </template>
 <script>
 import UserButton from '@/components/NavBar/UserButton.vue';
+import VersionesButton from '@/components/NavBar/VersionesButton.vue';
 export default {
     name : 'NavBar',
-    components : {UserButton},
+    components : {UserButton,VersionesButton},
     methods:{
         toggleSideBar(){
             this.$emit('toggleSideBar');
