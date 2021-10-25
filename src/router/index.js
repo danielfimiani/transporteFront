@@ -1,5 +1,5 @@
 import { createWebHistory, createRouter } from "vue-router";
-// import multiguard from 'vue-router-multiguard';
+import multiguard from 'vue-router-multiguard';
 
 //Components
 import Login from '@/views/Login';
@@ -9,24 +9,25 @@ import Home from '@/components/Home';
 import Users from '@/components/Users/Users';
 import ExcelUpload from '@/components/ExcelUpload/ExcelUpload';
 import BarCode from '@/components/BarCode/BarCode'
-import ConsultaSerie from '@/components/ConsultaSerie/ConsultaSerie'
+import ConsultaSerie from '@/components/ConsultaSerie/ConsultaSerie';
+import ConsultaPallet from '@/components/ConsultaPallet/ConsultaPallet';
 
-//AuthMiddleware
-// const AuthMiddleware = ((to,from,next) => {
-//   const user = localStorage.getItem('User');
-//   if(user){
-//     //Chek if the session expire 
-//     if (user.expiricy < Date.now()){
-//       localStorage.removeItem('User')
-//       next({ path: '/' })
-//     }else{
-//       next();
-//     }
-//   }
-//   else{
-//     next({ path: '/' })
-//   }
-// });
+AuthMiddleware
+const AuthMiddleware = ((to,from,next) => {
+  const user = localStorage.getItem('User');
+  if(user){
+    //Chek if the session expire 
+    if (user.expiricy < Date.now()){
+      localStorage.removeItem('User')
+      next({ path: '/' })
+    }else{
+      next()
+    }
+  }
+  else{
+    next({ path: '/' })
+  }
+});
 
 const routes = [
   {
@@ -38,7 +39,7 @@ const routes = [
     path: "/MainLayout",
     name: "MainLayout",
     component: MainLayout,
-    // beforeEnter : multiguard([AuthMiddleware]),
+    beforeEnter : multiguard([AuthMiddleware]),
     children : [
       {
         path: "/Home",
@@ -59,6 +60,11 @@ const routes = [
         path: "/ConsutlaSerie",
         name: "Serie",
         component: ConsultaSerie,
+      },
+      {
+        path: "/ConsultaPallet",
+        name: "Pallet",
+        component: ConsultaPallet,
       },
       {
         path: "/ExcelUpload",

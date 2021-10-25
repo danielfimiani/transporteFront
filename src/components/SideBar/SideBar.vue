@@ -20,7 +20,7 @@
             <div class="collapse-title text-xl font-medium">Consultas</div>
             <div class="collapse-content">
               <router-link
-                :to="{ name: 'Excel' }"
+                :to="{ name: 'Pallet' }"
                 class="btn btn-outline btn-accent mt-10 w-full"
               >
                 <svg
@@ -39,7 +39,7 @@
                 </svg>
                 <p>Consulta de Palets</p>
               </router-link>
-                            <router-link
+              <router-link
                 :to="{ name: 'Serie' }"
                 class="btn btn-outline btn-accent mt-10 w-full"
               >
@@ -221,9 +221,7 @@
         <li>
           <div class="collapse rounded collapse-arrow">
             <input type="checkbox" />
-            <div class="collapse-title text-xl font-medium">
-              Desarrollo
-            </div>
+            <div class="collapse-title text-xl font-medium">Desarrollo</div>
             <div class="collapse-content">
               <router-link
                 :to="{ name: 'Barcode' }"

@@ -2,19 +2,19 @@
   <div class="p-5">
     <!-- Form -->
     <div class="flex flex-row w-full justify-center items-center">
-      <h2 class="mb-3 mr-5 text-3xl font-bold">Consutla Serie</h2>
+      <h2 class="mb-3 mr-5 text-3xl font-bold">Consutla Pallet</h2>
 
       <div class="form-control flex flex-row justify-between w-4/5">
         <div class="relative w-1/3">
           <input
-            v-model="serie"
-            v-on:keyup.enter="handlePressSearchSerie()"
+            v-model="pallet"
+            v-on:keyup.enter="handlePressSearchpallet()"
             type="text"
-            placeholder="Serie"
+            placeholder="N Pallet"
             class="w-full pr-16 input input-primary input-bordered"
           />
           <button
-            @click.prevent="handlePressSearchSerie()"
+            @click.prevent="handlePressSearchpallet()"
             class="absolute top-0 right-0 rounded-l-none btn btn-primary"
             :class="loading ? 'loading disabled' : ''"
           >
@@ -22,7 +22,7 @@
           </button>
         </div>
         <button
-          v-if="objserie.length != 0"
+          v-if="objpallet.length != 0"
           class="btn btn-error btn-xl"
           @click="clear()"
         >
@@ -48,41 +48,41 @@
     <!-- Divider -->
     <div class="divider"></div>
 
-    <div v-if="objserie.length != 0">
-      <!-- Infor Serie -->
-      <SerieInfo :objserie="objserie" />
+    <div v-if="objpallet.length != 0">
+      <!-- Infor pallet -->
+      <PalletInfo :objpallet="objpallet" />
 
       <!-- Hist Flujo -->
-      <TFlujo :objserie="objserie" />
+      <TFlujo :objpallet="objpallet" />
     </div>
   </div>
 </template>
 
 <script>
-import TFlujo from "@/components/ConsultaSerie/TFlujo";
-import SerieInfo from "@/components/ConsultaSerie/SerieInfo";
+import TFlujo from "@/components/ConsultaPallet/TFlujo";
+import PalletInfo from "@/components/ConsultaPallet/PalletInfo";
 export default {
   data() {
     return {
-      serie: "",
-      objserie: [],
+      pallet: "",
+      objpallet: [],
       loading: false,
     };
   },
-  components: { TFlujo, SerieInfo },
+  components: { TFlujo, PalletInfo },
   methods: {
-    async handlePressSearchSerie() {
+    async handlePressSearchpallet() {
       this.loading = true;
-      this.objserie = [];
+      this.objpallet = [];
       let url =
         process.env.VUE_APP_OT_DEPOSITO +
-        `/api/SerieItem/GetSerie?id_serie=${this.serie}`;
+        `/api/PalletItem/GetPallet?id_pallet=${this.pallet}`;
       await fetch(url)
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
           if (data.success == "ok") {
-            this.objserie.push(JSON.parse(data.data));
+            this.objpallet.push(JSON.parse(data.data));
           } else {
             this.$notify(
               {
@@ -99,17 +99,17 @@ export default {
             {
               group: "error",
               title: "Error",
-              text: `No se pudo consultar la serie ${e.toString()}`,
+              text: `No se pudo consultar el Pallet ${e.toString()}`,
             },
             2000
           )
         );
-      this.serie = "";
+      this.pallet = "";
       this.loading = false;
     },
     clear() {
-      this.objserie = [];
-      this.serie = "";
+      this.objpallet = [];
+      this.pallet = "";
     },
   },
 };

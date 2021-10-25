@@ -13,12 +13,6 @@
             <li class="text-black">
                 <a @click="LogOut" class="m-auto">Cerrar Sesion</a> 
             </li> 
-            <!-- <li>
-            <a>Item 2</a>
-            </li> 
-            <li>
-            <a>Item 3</a>
-            </li> -->
         </ul>
     </div>
 </template>

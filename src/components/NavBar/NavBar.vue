@@ -14,7 +14,7 @@
             </span>
         </div>         
         
-        <div class="flex-none">
+        <div class="float-right">
             <UserButton></UserButton>
         </div>
     </div>
