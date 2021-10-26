@@ -2,7 +2,7 @@
     <div class="h-full bg-gray-400 w-full p-16">
         <div class="card text-center shadow-xl p-8 max-h-full bg-white overflow-hidden">
             <div class="flex relative justify-center items-center h-96" id="print">
-                <svg id="code1281"></svg>
+                <svg id="code128"></svg>
                 <svg id="code1282"></svg>
                 <svg id="code1283"></svg>
                 <svg id="code1284"></svg>

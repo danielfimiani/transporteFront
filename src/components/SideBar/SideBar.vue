@@ -98,7 +98,7 @@
             <div class="collapse-title text-xl font-medium">Operaciones</div>
             <div class="collapse-content">
               <router-link
-                :to="{ name: 'Excel' }"
+                :to="{ name: 'Recepcion' }"
                 class="btn btn-outline btn-accent mt-10 w-full"
               >
                 <svg
