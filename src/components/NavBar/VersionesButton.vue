@@ -8,7 +8,7 @@
                 <p @click="LogOut" class="m-auto">API DEPOSITO: v{{OT_DEPOSITO}}</p> 
             </li> 
             <li class="text-black">
-                <p @click="LogOut" class="m-auto">API LOGISTICA: v{{OT_DEPOSITO}}</p> 
+                <p @click="LogOut" class="m-auto">API LOGISTICA: v{{OT_LOGISTICA}}</p> 
             </li> 
             <li class="text-black">
                 <p @click="LogOut" class="m-auto">FRONT: v{{FRONT}} </p> 
@@ -39,7 +39,9 @@ export default {
             await fetch(urldepo).then(res => res.json()).then(data => this.OT_DEPOSITO = data.data);
             // Transporte
             await fetch(urllogi).then(res => res.json()).then(data => this.OT_LOGISTICA = data.data);
+
             console.log('Entro al getversiones' , urldepo,urllogi , this.OT_DEPOSITO,this.OT_LOGISTICA);
+
             setTimeout(this.GetVersion, 10000);
         }
     }

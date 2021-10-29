@@ -57,23 +57,7 @@
                   v-model="password"
                   required
                 />
-              </div>
-
-              <div class="form-control">
-                <label class="label">
-                  <span class="label-text">S/N Activo</span>
-                </label>
-                <select
-                  class="select select-bordered w-full max-w-xs"
-                  v-model="activo"
-                >
-                  <option disabled="disabled" selected="selected">
-                    Elige una opcion
-                  </option>
-                  <option value="1">Activo</option>
-                  <option value="0">Inactivo</option>
-                </select>
-              </div>
+              </div>             
             </div>
 
             <div class="modal-footer flex justify-between">
@@ -111,7 +95,6 @@ export default {
       nombre_apellido: "",
       email: "",
       password: "",
-      activo: 0,
     };
   },
   async mounted() {
@@ -132,7 +115,6 @@ export default {
         this.nombre_apellido = usuario[0].nombre_apellido;
         this.email = usuario[0].mail;
         this.password = usuario[0].Password;
-        this.activo = usuario[0].activo;
       }
     }
   },
@@ -159,13 +141,12 @@ export default {
         nombre_apellido: this.nombre_apellido,
         mail: this.email,
         password: encryptedPassword,
-        activo: parseInt(this.activo),
       };
 
       if (this.newuser) {
-        url = process.env.VUE_APP_ROOT_API+"/api/Usuario/CreateUsuario";
+        url = process.env.VUE_APP_OT_LOGISTICA+"/api/Usuario/CreateUsuario";
       } else {
-        url = process.env.VUE_APP_ROOT_API + "/api/Usuario/UpdateUsuario";
+        url = process.env.VUE_APP_OT_LOGISTICA + "/api/Usuario/UpdateUsuario";
       }
 
       await axios
