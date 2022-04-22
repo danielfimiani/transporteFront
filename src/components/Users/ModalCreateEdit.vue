@@ -57,7 +57,7 @@
                   v-model="password"
                   required
                 />
-              </div>             
+              </div>
             </div>
 
             <div class="modal-footer flex justify-between">
@@ -80,7 +80,7 @@
   </transition>
 </template>
 <script>
-import axios from 'axios';
+import axios from "axios";
 import pkg from "node-forge";
 const { pki } = pkg;
 import btoa from "btoa";
@@ -121,7 +121,7 @@ export default {
   methods: {
     async updateCreateUser() {
       let url;
-      
+
       const publicKey = `-----BEGIN PUBLIC KEY-----
         MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwlG/yuC748z8uf9lvjt5
         rlF/9xi/bdHQ3EXOyIQU30HgkFz+xYjehVBVy6RvPV6UM+AxbTVUWHUmraY6hmsJ
@@ -144,13 +144,13 @@ export default {
       };
 
       if (this.newuser) {
-        url = process.env.VUE_APP_OT_LOGISTICA+"/api/Usuario/CreateUsuario";
+        url = process.env.VUE_APP_OT_LOGISTICA + "/api/Usuario/CreateUsuario";
       } else {
         url = process.env.VUE_APP_OT_LOGISTICA + "/api/Usuario/UpdateUsuario";
       }
 
       await axios
-        .post(url, User, { headers: { "Access-Control-Allow-Origin": "*" } })
+        .post(url, User)
         .then((res) => {
           if (res.data.success == "ok") {
             this.$notify(
@@ -161,8 +161,8 @@ export default {
               },
               2000
             ); // 2s
-            this.$emit('closeModal')
-          }else{
+            this.$emit("closeModal");
+          } else {
             this.$notify(
               {
                 group: "error",
@@ -170,19 +170,19 @@ export default {
                 text: `No se pudo grabar el usuario ${res.data.errorMessage.toString()}`,
               },
               2000
-            ); 
+            );
           }
         })
-        .catch(e =>{
-            this.$notify(
-              {
-                group: "error",
-                title: "Error",
-                text: `No se pudo grabar el usuario ${e.toString()}`,
-              },
-              2000
-            ); 
-            console.log(e);
+        .catch((e) => {
+          this.$notify(
+            {
+              group: "error",
+              title: "Error",
+              text: `No se pudo grabar el usuario ${e.toString()}`,
+            },
+            2000
+          );
+          console.log(e);
         });
     },
   },

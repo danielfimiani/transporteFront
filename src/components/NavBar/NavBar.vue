@@ -15,7 +15,7 @@
         </div>         
         
         <div class="float-right">
-            <VersionesButton/>
+            <VersionesButton ref="VersionesButton" @click="this.$refs.VersionesButton.GetVersion()"/>
             <UserButton/>
         </div>
     </div>

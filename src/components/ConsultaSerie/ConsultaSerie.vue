@@ -65,7 +65,7 @@ export default {
   data() {
     return {
       serie: "",
-      objserie: [],
+      objserie: [], 
       loading: false,
     };
   },
@@ -76,12 +76,12 @@ export default {
       this.objserie = [];
       let url =
         process.env.VUE_APP_OT_DEPOSITO +
-        `/api/SerieItem/GetSerie?id_serie=${this.serie}`;
+        `/api/SerieItem/GetSerieItem?id_serie=${this.serie}`;
       await fetch(url)
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
           if (data.success == "ok") {
+            console.log(data.data)
             this.objserie.push(JSON.parse(data.data));
           } else {
             this.$notify(

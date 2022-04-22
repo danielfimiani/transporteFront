@@ -5,13 +5,13 @@
         </div> 
         <ul tabindex="0" class="p-2 shadow menu dropdown-content bg-base-100 rounded-box w-56">
             <li class="text-black">
-                <p @click="LogOut" class="m-auto">API DEPOSITO: v{{OT_DEPOSITO}}</p> 
+                <p class="m-auto">DEPOSITO: v{{OT_DEPOSITO}}</p> 
             </li> 
             <li class="text-black">
-                <p @click="LogOut" class="m-auto">API LOGISTICA: v{{OT_LOGISTICA}}</p> 
+                <p class="m-auto">LOGISTICA: v{{OT_LOGISTICA}}</p> 
             </li> 
             <li class="text-black">
-                <p @click="LogOut" class="m-auto">FRONT: v{{FRONT}} </p> 
+                <p class="m-auto">FRONT: v{{FRONT}} </p> 
             </li> 
         </ul>
     </div>
@@ -26,9 +26,6 @@ export default {
             FRONT : ''
         }
     },
-    mounted(){
-      this.GetVersion();
-    },
     methods:{
         async GetVersion(){
             let urldepo = process.env.VUE_APP_OT_DEPOSITO+'/Api/GetVersion';
@@ -36,13 +33,11 @@ export default {
             // Front
             this.FRONT = version;
             // Deposito
-            await fetch(urldepo).then(res => res.json()).then(data => this.OT_DEPOSITO = data.data);
+            await fetch(urldepo).then(data => data.text()).then(data => this.OT_DEPOSITO = data.split('-')[0]);
             // Transporte
-            await fetch(urllogi).then(res => res.json()).then(data => this.OT_LOGISTICA = data.data);
+            await fetch(urllogi).then(data => data.text()).then(data => this.OT_LOGISTICA = data.split('-')[0]);     
 
-            console.log('Entro al getversiones' , urldepo,urllogi , this.OT_DEPOSITO,this.OT_LOGISTICA);
-
-            setTimeout(this.GetVersion, 10000);
+            // console.log('Entro al getversiones' , urldepo,urllogi , this.OT_DEPOSITO,this.OT_LOGISTICA);
         }
     }
 }

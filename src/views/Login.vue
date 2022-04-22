@@ -50,8 +50,9 @@
 <script>
 import axios from "axios";
 import Spinner from "../components/Spinner.vue";
-import pkg from "node-forge";
+import pkg from 'node-forge';
 const { pki } = pkg;
+import { JSEncrypt } from 'jsencrypt'  
 import btoa from "btoa";
 
 export default {
@@ -88,7 +89,11 @@ export default {
         -----END PUBLIC KEY-----
         `;
 
+      let encrypt = new JSEncrypt()
+      encrypt.setPublicKey(publicKey)
       var rsa = pki.publicKeyFromPem(publicKey);
+      console.log('RSA :' + rsa.encrypt(this.password));
+      console.log('JSENcrypt : ' + encrypt.encrypt(this.password));
       var encryptedPassword = btoa(rsa.encrypt(this.password));
 
 
