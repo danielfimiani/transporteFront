@@ -24,7 +24,7 @@
                             <!-- User name -->
                             <td>
                                 <div class="font-bold">
-                                    {{user.UserName.toUpperCase()}}
+                                    {{user.userName.toUpperCase()}}
                                 </div> 
                             </td> 
                             <!-- User name -->
@@ -49,11 +49,11 @@
                                 </div>
                             </td> 
                             <td>
-                                <button class="btn btn-sm btn-info" @click.prevent="editUser(user.UserName)">Editar</button> 
+                                <button class="btn btn-sm btn-info" @click.prevent="editUser(user.userName)">Editar</button> 
                             </td>
                             <td>
-                                <button v-if="user.activo=='1'" class="btn btn-sm btn-error" @click.prevent="deleteUser(user.UserName)">Deshabiltiar</button>
-                                <button v-else class="btn btn-sm btn-error" @click.prevent="deleteUser(user.UserName)">Habilitar</button>
+                                <button v-if="user.activo=='1'" class="btn btn-sm btn-error" @click.prevent="deleteUser(user.userName)">Deshabiltiar</button>
+                                <button v-else class="btn btn-sm btn-error" @click.prevent="deleteUser(user.userName)">Habilitar</button>
                                 
                             </td>
                         </tr>
@@ -90,7 +90,7 @@ export default {
     async mounted(){
         await fetch(process.env.VUE_APP_OT_LOGISTICA+'/api/Usuario/GetUsuarios')
         .then(res => res.json())
-        .then(data => this.users = JSON.parse(data.data))
+        .then(data => this.users = data.data )
         .catch(e=> console.error(e));
     },
     methods:{
@@ -106,7 +106,7 @@ export default {
         updateForm(){
             fetch(process.env.VUE_APP_OT_LOGISTICA+'/api/Usuario/GetUsuarios')
             .then(res => res.json())
-            .then(data => this.users = JSON.parse(data.data))
+            .then(data => this.users = data.data)
             .catch(e=> console.error(e));
             this.showModalDelete = false;
             this.showModalCreateEdit = false;

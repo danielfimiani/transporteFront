@@ -103,18 +103,18 @@ export default {
       await fetch(process.env.VUE_APP_OT_LOGISTICA + "/api/Usuario/GetUsuarios")
         .then((res) => res.json())
         .then((data) => {
-          usuario = JSON.parse(data.data).filter(
-            (u) => u.UserName == this.userEdit
+          usuario = data.data.filter(
+            (u) => u.userName == this.userEdit
           );
         })
         .catch((e) => console.error(e));
 
       if (usuario) {
         this.newuser = false;
-        this.username = usuario[0].UserName;
+        this.username = usuario[0].userName;
         this.nombre_apellido = usuario[0].nombre_apellido;
         this.email = usuario[0].mail;
-        this.password = usuario[0].Password;
+        this.password = usuario[0].password;
       }
     }
   },

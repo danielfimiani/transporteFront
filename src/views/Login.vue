@@ -50,10 +50,7 @@
 <script>
 import axios from "axios";
 import Spinner from "../components/Spinner.vue";
-import pkg from 'node-forge';
-const { pki } = pkg;
-import { JSEncrypt } from 'jsencrypt'  
-import btoa from "btoa";
+import forge from 'node-forge';
 
 export default {
   name: "Login",
@@ -75,27 +72,22 @@ export default {
   methods: {
     async Login() {
       this.spiner = !this.spiner;
-      let url =
-        process.env.VUE_APP_OT_LOGISTICA + "/api/Login/AuthenticateUserFront";
+      
+      let url = process.env.VUE_APP_OT_LOGISTICA + "/api/Login/AuthenticateUserFront";
 
       const publicKey = `-----BEGIN PUBLIC KEY-----
-        MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwlG/yuC748z8uf9lvjt5
-        rlF/9xi/bdHQ3EXOyIQU30HgkFz+xYjehVBVy6RvPV6UM+AxbTVUWHUmraY6hmsJ
-        /oeAlO6ukDXTT8v30BsLZ0PpN95DfI67cCUbc0R2xrusRMc7EaGArehMHRKP3Bho
-        enS7LfTRdtZfc4vbq4Vj5RyXDolfW2d1HVG635sIFY+VdjIdlldxI6EOG3Lx+PvT
-        x5U/jH0R38PqzSnXC5qCwz0FzBP5X8yMowQDQB67Cm0JP1ffJ4rhdXBmGOQXCa8C
-        KXlTTUJrBLJtR04BkU/r7wP+C+DCuvUgNlkRNrJCugcCA1mJvIPD4CCxDT3H7wzX
-        VwIDAQAB
-        -----END PUBLIC KEY-----
-        `;
+      MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwlG/yuC748z8uf9lvjt5
+      rlF/9xi/bdHQ3EXOyIQU30HgkFz+xYjehVBVy6RvPV6UM+AxbTVUWHUmraY6hmsJ
+      /oeAlO6ukDXTT8v30BsLZ0PpN95DfI67cCUbc0R2xrusRMc7EaGArehMHRKP3Bho
+      enS7LfTRdtZfc4vbq4Vj5RyXDolfW2d1HVG635sIFY+VdjIdlldxI6EOG3Lx+PvT
+      x5U/jH0R38PqzSnXC5qCwz0FzBP5X8yMowQDQB67Cm0JP1ffJ4rhdXBmGOQXCa8C
+      KXlTTUJrBLJtR04BkU/r7wP+C+DCuvUgNlkRNrJCugcCA1mJvIPD4CCxDT3H7wzX
+      VwIDAQAB
+      -----END PUBLIC KEY-----
+      `;
 
-      let encrypt = new JSEncrypt()
-      encrypt.setPublicKey(publicKey)
-      var rsa = pki.publicKeyFromPem(publicKey);
-      console.log('RSA :' + rsa.encrypt(this.password));
-      console.log('JSENcrypt : ' + encrypt.encrypt(this.password));
-      var encryptedPassword = btoa(rsa.encrypt(this.password));
-
+      var rsa = forge.pki.publicKeyFromPem(publicKey);
+      var encryptedPassword = window. btoa(rsa.encrypt(this.password));
 
       let credentials = {
         userName: this.username,
@@ -103,9 +95,7 @@ export default {
       };
 
       await axios
-        .post(url, credentials, {
-          headers: { "Access-Control-Allow-Origin": "*" },
-        })
+        .post(url, credentials)
         .then((res) => {
           if (res.data.success == "ok") {
             let user = {

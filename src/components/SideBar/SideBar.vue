@@ -29,66 +29,6 @@
                 </svg>
                 <p>Consulta de Palets</p>
               </router-link>
-              <router-link
-                :to="{ name: 'Serie' }"
-                class="btn btn-outline btn-accent mt-10 w-full"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-6 w-6 mr-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                  />
-                </svg>
-                <p>Consulta de Series</p>
-              </router-link>
-              <router-link
-                :to="{ name: 'Excel' }"
-                class="btn btn-outline btn-accent mt-10 w-full"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-6 w-6 mr-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
-                  />
-                </svg>
-                <p>Recepcion</p>
-              </router-link>
-              <router-link
-                :to="{ name: 'Excel' }"
-                class="btn btn-outline btn-accent mt-10 w-full"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-6 w-6 mr-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"
-                  />
-                </svg>
-                <p>Despacho</p>
-              </router-link>
             </div>
           </div>
         </li>
@@ -97,6 +37,26 @@
             <input type="checkbox" />
             <div class="collapse-title text-xl font-medium">Operaciones</div>
             <div class="collapse-content">
+              <router-link
+                :to="{ name: 'Excel' }"
+                class="btn btn-outline btn-accent mt-10 w-full"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-6 w-6 mr-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                  />
+                </svg>
+                <p>Recepcion</p>
+              </router-link>
               <router-link
                 :to="{ name: 'Recepcion' }"
                 class="btn btn-outline btn-accent mt-10 w-full"
@@ -107,18 +67,18 @@
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
+                  stroke-width="2"
                 >
                   <path
                     stroke-linecap="round"
                     stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"
+                    d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"
                   />
                 </svg>
-                <p>Recepcion</p>
+                <p>Impresion partes</p>
               </router-link>
               <router-link
-                :to="{ name: 'Excel' }"
+                :to="{ name: 'Despachos' }"
                 class="btn btn-outline btn-accent mt-10 w-full"
               >
                 <svg
@@ -135,27 +95,7 @@
                     d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"
                   />
                 </svg>
-                <p>Despacho</p>
-              </router-link>
-              <router-link
-                :to="{ name: 'Excel' }"
-                class="btn btn-outline btn-accent mt-10 w-full"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-6 w-6 mr-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"
-                  />
-                </svg>
-                <p>Conteo</p>
+                <p>Despachos</p>
               </router-link>
             </div>
           </div>
@@ -185,7 +125,7 @@
                 </svg>
                 <p>Gestion de Usuarios</p>
               </router-link>
-              <router-link
+              <!-- <router-link
                 :to="{ name: 'Excel' }"
                 class="btn btn-outline btn-accent mt-10 w-full"
               >
@@ -204,35 +144,7 @@
                   />
                 </svg>
                 <p>Locaciones</p>
-              </router-link>
-            </div>
-          </div>
-        </li>
-        <li>
-          <div class="collapse rounded collapse-arrow">
-            <input type="checkbox" />
-            <div class="collapse-title text-xl font-medium">Desarrollo</div>
-            <div class="collapse-content">
-              <router-link
-                :to="{ name: 'Barcode' }"
-                class="btn btn-outline btn-accent mt-10 w-full"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-6 w-6 mr-2 stroke-current"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="{2}"
-                    d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"
-                  />
-                </svg>
-                <p>Codigos de barra</p>
-              </router-link>
+              </router-link> -->
             </div>
           </div>
         </li>

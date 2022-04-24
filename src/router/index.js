@@ -12,6 +12,7 @@ import BarCode from '@/components/BarCode/BarCode'
 import ConsultaSerie from '@/components/ConsultaSerie/ConsultaSerie';
 import ConsultaPallet from '@/components/ConsultaPallet/ConsultaPallet';
 import Recepcion from '@/components/Recepcion/Recepcion';
+import Despachos from '@/components/Despachos/Despachos';
 
 AuthMiddleware
 const AuthMiddleware = ((to,from,next) => {
@@ -76,6 +77,11 @@ const routes = [
         path: "/ExcelUpload",
         name: "Excel",
         component: ExcelUpload,
+      },
+      {
+        path: "/PreparacionDespachos",
+        name: "Despachos",
+        component: Despachos,
       },
     ]
   },
